@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Monster Hunter</string>
 
-    <string name="search_name">Search Player</string>
+    <string name="search_name">Search Name</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
+    <string name="defense">Defense</string>
+    <string name="base">Base</string>
+    <string name="max">Max</string>
+    <string name="augmented">Augmented</string>
 </resources>

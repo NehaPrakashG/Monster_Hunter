@@ -40,12 +40,20 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
 
     private fun initUi(rootView: View) { /*initializing and setting data to views*/
         val name_tv = rootView.findViewById<TextView>(R.id.name_tv)
+        val rank_tv = rootView.findViewById<TextView>(R.id.rank_tv)
         val female_tv = rootView.findViewById<TextView>(R.id.female_tv)
         val male_tv = rootView.findViewById<TextView>(R.id.male_tv)
         val male_imgv = rootView.findViewById<ImageView>(R.id.male_imgv)
         val female_imgv = rootView.findViewById<ImageView>(R.id.female_imgv)
-        name_tv.setText(details.name)
+        val base_tv = rootView.findViewById<TextView>(R.id.base_tv)
+        val max_tv = rootView.findViewById<TextView>(R.id.max_tv)
+        val augmented_tv = rootView.findViewById<TextView>(R.id.augmented_tv)
 
+        name_tv.setText(details.name)
+        rank_tv.setText("Rank: "+details.rank)
+        base_tv.setText(details.defense?.base.toString())
+        max_tv.setText(details.defense?.max.toString())
+        augmented_tv.setText(details.defense?.augmented.toString())
         female_tv.setText("Female")
         male_tv.setText("Male")
         if(details.assets?.imageFemale !=null && details.assets?.imageMale!=null) {

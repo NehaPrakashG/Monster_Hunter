@@ -5,6 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="red">#D02C20</color>
     <color name="green">#2B982F</color>
+    <color name="neon_green">#C40EE016</color>
     <color name="grey">#959695</color>
     <color name="yellow">#F4DD1A</color>
+    <color name="orange">#B2FF9800</color>
 </resources>
