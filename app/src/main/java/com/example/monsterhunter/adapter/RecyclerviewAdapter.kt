@@ -1,39 +1,48 @@
 package com.example.monsterhunter.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.monsterhunter.Interface.IOnstateChanged
 import com.example.monsterhunter.Interface.IRecyclerV_ItemClick
 import com.example.monsterhunter.Model.ArmorDataResponse
-import com.example.monsterhunter.Model.Skill
 import com.example.monsterhunter.R
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class RecyclerviewAdapter(var context: Context, Listdata: ArrayList<ArmorDataResponse>, SearchedData: ArrayList<ArmorDataResponse>,
-                           val ItemClickListener: IRecyclerV_ItemClick) : RecyclerView.Adapter<RecyclerviewAdapter.DataHolder>(), Filterable {
+class RecyclerviewAdapter(
+    var context: Context,
+    Listdata: ArrayList<ArmorDataResponse>,
+    SearchedData: ArrayList<ArmorDataResponse>,
+    val ItemClickListener: IRecyclerV_ItemClick
+) : RecyclerView.Adapter<RecyclerviewAdapter.DataHolder>(), Filterable {
 
     var Armdata: ArrayList<ArmorDataResponse> = Listdata
     var dataSearchList: ArrayList<ArmorDataResponse> = SearchedData
     var hashMap: HashMap<String, Int> = HashMap<String, Int>()
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerviewAdapter.DataHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recy_itemlayout, parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerviewAdapter.DataHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.recy_itemlayout, parent, false)
         hashMap.put("chest", R.drawable.ic_chest);
         hashMap.put("gloves", R.drawable.ic_gloves);
         hashMap.put("head", R.drawable.ic_head);
         hashMap.put("legs", R.drawable.ic_legs);
         hashMap.put("waist", R.drawable.ic_waist);
-       /* Created a hashmap to map images to type attribute*/
+        /* Created a hashmap to map images to type attribute*/
         return DataHolder(view)
     }
 
@@ -43,7 +52,9 @@ class RecyclerviewAdapter(var context: Context, Listdata: ArrayList<ArmorDataRes
 
     override fun onBindViewHolder(holder: RecyclerviewAdapter.DataHolder, position: Int) {
         holder.name_tv.setText(dataSearchList.get(position).name);
-        holder.rank_tv.setText(dataSearchList.get(position).rank.toString().toUpperCase(Locale.ROOT));
+        holder.rank_tv.setText(
+            dataSearchList.get(position).rank.toString().toUpperCase(Locale.ROOT)
+        );
         if (dataSearchList.get(position).rank == "low") {  /*Seting color for high low rank*/
             holder.rank_tv.setTextColor(ContextCompat.getColor(context, R.color.red))
         } else {
@@ -125,7 +136,9 @@ class RecyclerviewAdapter(var context: Context, Listdata: ArrayList<ArmorDataRes
                 } else {
                     val resultList = ArrayList<ArmorDataResponse>()
                     for (row in Armdata) {
-                        if (row.name.toString().toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                        if (row.name.toString().toLowerCase(Locale.ROOT)
+                                .contains(charSearch.toLowerCase(Locale.ROOT))
+                        ) {
                             resultList.add(row)
                         }
                     }
@@ -145,14 +158,16 @@ class RecyclerviewAdapter(var context: Context, Listdata: ArrayList<ArmorDataRes
         }
     }
 
-    fun registerActivityState() = object : IOnstateChanged {  /*to save and retrve state onpaused and resume*/
-        override fun onResumed() {
-            Log.d("RecyclerviewAdapter", "onResumed: ")
+    fun registerActivityState() =
+        object : IOnstateChanged {  /*to save and retrve state onpaused and resume*/
+            override fun onResumed() {
+                Log.d("RecyclerviewAdapter", "onResumed: ")
+            }
+
+            override fun onPaused() {
+                Log.d("RecyclerviewAdapter", "onPaused: ")
+            }
         }
-        override fun onPaused() {
-            Log.d("RecyclerviewAdapter", "onPaused: ")
-        }
-    }
 }
 
 

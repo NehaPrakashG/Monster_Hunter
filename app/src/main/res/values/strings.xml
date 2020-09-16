@@ -2,10 +2,17 @@
     <string name="app_name">Monster Hunter</string>
 
     <string name="search_name">Search Name</string>
+    <string name="armor">armor</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="defense">Defense</string>
     <string name="base">Base</string>
     <string name="max">Max</string>
+    <string name="rank">Rank: </string>
     <string name="augmented">Augmented</string>
+
+
+    <string name="exit_message_alert">Are you sure you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
