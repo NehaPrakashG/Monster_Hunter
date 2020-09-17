@@ -66,51 +66,41 @@ class RecyclerviewAdapter(
         holder.typeIView.setBackgroundResource(R.drawable.ic_shield)
         holder.base_tv.setText(dataSearchList.get(position).defense?.base.toString() + " +")
 
-        if (!dataSearchList.get(position).slots.isEmpty()) {    /*Created 5 slots to dynamically show and hide the rank */
-            if (dataSearchList.get(position).slots.size == 1) {
-                holder.slots_tv1.visibility = View.VISIBLE
-                holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
-
-            }
-            if (dataSearchList.get(position).slots.size == 2) {
-                holder.slots_tv1.visibility = View.VISIBLE
-                holder.slots_tv2.visibility = View.VISIBLE
-                holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
-                holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())
-
-            } else if (dataSearchList.get(position).slots.size == 3) {
-                holder.slots_tv1.visibility = View.VISIBLE
-                holder.slots_tv2.visibility = View.VISIBLE
-                holder.slots_tv3.visibility = View.VISIBLE
-                holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
-                holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())
-                holder.slots_tv3.setText(dataSearchList.get(position).slots[2].rank.toString())
-
-            } else if (dataSearchList.get(position).slots.size == 4) {
-                holder.slots_tv1.visibility = View.VISIBLE
-                holder.slots_tv2.visibility = View.VISIBLE
-                holder.slots_tv3.visibility = View.VISIBLE
-                holder.slots_tv4.visibility = View.VISIBLE
-                holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
-                holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())
-                holder.slots_tv3.setText(dataSearchList.get(position).slots[2].rank.toString())
-                holder.slots_tv4.setText(dataSearchList.get(position).slots[3].rank.toString())
-
-            }
-        } else {  /*By default hiding all slots*/
-            holder.slots_tv1.visibility = View.GONE
-            holder.slots_tv2.visibility = View.GONE
-            holder.slots_tv3.visibility = View.GONE
-            holder.slots_tv4.visibility = View.GONE
-            holder.slots_tv5.visibility = View.GONE
-
-        }
-
+        if (!dataSearchList.get(position).slots.isEmpty()) {
+            val size = dataSearchList.get(position).slots.size
+            when(size) {
+                1 -> {holder.slots_tv1.visibility = View.VISIBLE
+                    holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())}
+                2 -> { holder.slots_tv1.visibility = View.VISIBLE
+                    holder.slots_tv2.visibility = View.VISIBLE
+                    holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
+                    holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())}
+                3 -> {holder.slots_tv1.visibility = View.VISIBLE
+                    holder.slots_tv2.visibility = View.VISIBLE
+                    holder.slots_tv3.visibility = View.VISIBLE
+                    holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
+                    holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())
+                    holder.slots_tv3.setText(dataSearchList.get(position).slots[2].rank.toString())}
+                4 -> { holder.slots_tv1.visibility = View.VISIBLE
+                    holder.slots_tv2.visibility = View.VISIBLE
+                    holder.slots_tv3.visibility = View.VISIBLE
+                    holder.slots_tv4.visibility = View.VISIBLE
+                    holder.slots_tv1.setText(dataSearchList.get(position).slots[0].rank.toString())
+                    holder.slots_tv2.setText(dataSearchList.get(position).slots[1].rank.toString())
+                    holder.slots_tv3.setText(dataSearchList.get(position).slots[2].rank.toString())
+                    holder.slots_tv4.setText(dataSearchList.get(position).slots[3].rank.toString())
+                }
+                else -> { holder.slots_tv1.visibility = View.GONE
+                    holder.slots_tv2.visibility = View.GONE
+                    holder.slots_tv3.visibility = View.GONE
+                    holder.slots_tv4.visibility = View.GONE
+                    holder.slots_tv5.visibility = View.GONE}
+            }/*Created 5 slots to dynamically show and hide the rank */
+    }
         holder.itemView.setOnClickListener {
             ItemClickListener.onCellClickListener(dataSearchList.get(position).id)
         }
-    }
-
+}
     class DataHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
         var name_tv: TextView = v.findViewById(R.id.name_tv)

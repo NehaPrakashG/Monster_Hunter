@@ -1,15 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0D0D0D"
     android:clickable="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints,UselessParent">
+        android:layout_margin="@dimen/margin_medium">
 
         <TextView
             android:id="@+id/name_tv"
@@ -19,7 +18,6 @@
             android:gravity="center"
             android:textColor="@color/orange"
             android:textSize="@dimen/text_size_xlarge"
-
             android:textStyle="bold" />
 
         <TextView
@@ -28,86 +26,97 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/orange"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_below="@id/name_tv"
+            android:textColor="@color/yellow"
             android:textSize="@dimen/text_size_xlarge"
-
             android:textStyle="bold" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:maxHeight="@dimen/med_height"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            android:gravity="center"
+            android:id="@+id/iamgeLayout"
+            android:layout_marginTop="@dimen/margin_large"
+            android:padding="@dimen/margin_medium"
+            android:layout_below="@+id/name_tv"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_margin="@dimen/margin_medium"
+            android:maxHeight="@dimen/med_height">
 
             <ImageView
                 android:id="@+id/male_imgv"
-                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_width="@dimen/xlarge_width"
+                android:layout_height="@dimen/xlarge_width"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:gravity="center"
+
+                />
+            <TextView
+                android:id="@+id/male_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:gravity="center"
+                android:textColor="@color/neon_green"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_below="@+id/male_imgv"
+                android:text="@string/male"
+                android:layout_marginStart="@dimen/margin_xlarge"/>
 
             <ImageView
                 android:id="@+id/female_imgv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/male_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_toEndOf="@id/male_imgv"
+                android:layout_width="@dimen/xlarge_width"
+                android:layout_height="@dimen/xlarge_width"
                 android:gravity="center"
-                android:textColor="@color/neon_green"
-                android:textSize="@dimen/text_size_medium" />
 
+                />
             <TextView
                 android:id="@+id/female_tv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:text="@string/female"
+                android:layout_toEndOf="@id/male_tv"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_below="@id/female_imgv"
                 android:textColor="@color/neon_green"
                 android:textSize="@dimen/text_size_medium" />
+        </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_medium"
-            android:background="@drawable/rectangle_margin"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:layout_below="@+id/iamgeLayout"
+            android:layout_margin="@dimen/margin_xlarge"
+            android:padding="@dimen/padding_small"
+            android:background="@drawable/rectangle_margin">
 
             <TextView
                 android:id="@+id/defense_tv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_medium"
                 android:text="@string/defense"
                 android:textColor="@color/yellow"
+                android:layout_marginStart="@dimen/margin_small"
                 android:textSize="@dimen/text_size_xlarge"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:orientation="horizontal">
+
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_below="@+id/defense_tv"
                     android:text="@string/base"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:id="@+id/baseLabel"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_size_medium" />
 
@@ -115,60 +124,59 @@
                     android:id="@+id/base_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_toEndOf="@+id/baseLabel"
+                    android:layout_marginStart="@dimen/margin_xxlarge"
+                    android:layout_below="@+id/defense_tv"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_size_medium" />
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/baseLabel"
+                android:text="@string/max"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:id="@+id/maxLabel"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium" />
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/max_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:layout_toEndOf="@+id/maxLabel"
+                android:layout_marginStart="@dimen/margin_xxlarge"
+                android:layout_below="@+id/base_tv"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/max"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/maxLabel"
+                android:text="@string/augmented"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:id="@+id/augmentedLabel"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium" />
 
-                <TextView
-                    android:id="@+id/max_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
 
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/augmented_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:layout_toEndOf="@+id/augmentedLabel"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_below="@+id/max_tv"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/augmented"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
 
-                <TextView
-                    android:id="@+id/augmented_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
+        </RelativeLayout>
 
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>

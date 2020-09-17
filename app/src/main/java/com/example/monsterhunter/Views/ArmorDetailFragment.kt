@@ -65,7 +65,7 @@ class ArmorDetailFragment : Fragment() {
             Glide.with(this).load(details.assets?.imageFemale).into(female_imgv);
         } else {
             female_tv.visibility = View.GONE
-            male_tv.visibility = View.GONE
+            male_tv.setText(getString(R.string.no_img))
         }
     }
 

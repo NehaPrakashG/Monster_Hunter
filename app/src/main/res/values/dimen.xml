@@ -3,6 +3,7 @@
     <dimen name="margin_medium">10dp</dimen>
     <dimen name="margin_large">20dp</dimen>
     <dimen name="margin_xlarge">45dp</dimen>
+    <dimen name="margin_xxlarge">90dp</dimen>
     <dimen name="margin_small">5dp</dimen>
 
     <dimen name="padding_medium">10dp</dimen>
@@ -19,7 +20,11 @@
 
     <dimen name="min_width">10dp</dimen>
     <dimen name="min_height">10dp</dimen>
- <dimen name="med_width">20dp</dimen>
+    <dimen name="med_width">20dp</dimen>
     <dimen name="med_height">20dp</dimen>
+    <dimen name="large_width">50dp</dimen>
+    <dimen name="large_height">50dp</dimen>
+    <dimen name="xlarge_width">90dp</dimen>
+    <dimen name="xlarge_height">90dp</dimen>
 
 </resources>

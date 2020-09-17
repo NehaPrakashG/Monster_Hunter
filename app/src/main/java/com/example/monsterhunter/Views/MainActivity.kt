@@ -69,9 +69,12 @@ class MainActivity : AppCompatActivity(), IarmView.View, IRecyclerV_ItemClick {
         Toast.makeText(this, position.toString(), Toast.LENGTH_SHORT).show()
         val bundle = Bundle()
         if (position != null) {
-            if (position > 0) {
-                bundle.putParcelable(getString(R.string.armor), ArmResponseList.get(position - 1))
-            }  /*Id starts from 1 and position from 0*/
+            val index = ArmResponseList.indexOfFirst { it.id == position} //checks the value of id in the arraylist
+            if (index >= 0) {
+                val user = ArmResponseList[index]
+                bundle.putParcelable(getString(R.string.armor), user)
+            }
+
         }
         CallDetailsFragment(bundle) /*On click of item opens fragment*/
     }

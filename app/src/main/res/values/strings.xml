@@ -15,4 +15,5 @@
     <string name="exit_message_alert">Are you sure you want to exit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="no_img">Image Unavailable</string>
 </resources>
